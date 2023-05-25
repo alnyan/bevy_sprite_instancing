@@ -8,6 +8,7 @@ license = "MIT OR Apache-2.0"
 homepage = "https://github.com/alnyan/bevy_sprite_instancing"
 repository = "https://github.com/alnyan/bevy_sprite_instancing"
 readme = "README.md"
+exclude = ["*.gif"]
 
 [dependencies]
 bevy_app = "0.10.1"
