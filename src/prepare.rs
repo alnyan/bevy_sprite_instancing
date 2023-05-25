@@ -1,18 +1,19 @@
-use bevy_core_pipeline::core_2d::Transparent2d;
-use bevy_ecs::prelude::*;
-use bevy_render::{
-    render_asset::RenderAssets,
-    render_phase::{DrawFunctions, RenderPhase},
-    render_resource::{
-        BindGroupDescriptor, BindGroupEntry, BindingResource, PipelineCache,
-        SpecializedMeshPipelines,
+use bevy::{
+    core_pipeline::core_2d::Transparent2d,
+    prelude::*,
+    render::{
+        render_asset::RenderAssets,
+        render_phase::{DrawFunctions, RenderPhase},
+        render_resource::{
+            BindGroupDescriptor, BindGroupEntry, BindingResource, PipelineCache,
+            SpecializedMeshPipelines,
+        },
+        renderer::RenderDevice,
+        view::ExtractedView,
     },
-    renderer::RenderDevice,
-    texture::Image,
-    view::{ExtractedView, Msaa},
+    sprite::Mesh2dPipelineKey,
+    utils::FloatOrd,
 };
-use bevy_sprite::Mesh2dPipelineKey;
-use bevy_utils::FloatOrd;
 
 use super::{
     draw::DrawSpritesInstancedCommands,

@@ -1,17 +1,14 @@
-use bevy_asset::Handle;
-use bevy_ecs::prelude::*;
-use bevy_math::Vec3Swizzles;
-use bevy_render::{
-    render_resource::{Buffer, BufferInitDescriptor, BufferUsages},
-    renderer::RenderDevice,
-    texture::Image,
-    Extract,
+use bevy::{
+    math::Vec3Swizzles,
+    prelude::*,
+    render::{
+        render_resource::{Buffer, BufferInitDescriptor, BufferUsages},
+        renderer::RenderDevice,
+        Extract,
+    },
 };
-use bevy_transform::prelude::Transform;
 
-use crate::SpriteInstanceData;
-
-use super::{InstancedSprite, InstancedSpritesheet, SpriteInstancingGroup};
+use super::{InstancedSprite, InstancedSpritesheet, SpriteInstanceData, SpriteInstancingGroup};
 
 #[derive(Component)]
 pub struct ExtractedSpriteInstancingBuffer {

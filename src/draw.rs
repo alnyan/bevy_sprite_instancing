@@ -1,14 +1,16 @@
-use bevy_ecs::system::{
-    lifetimeless::{Read, SRes},
-    Res,
-};
-use bevy_render::{
-    mesh::GpuBufferInfo,
-    render_phase::{
-        PhaseItem, RenderCommand, RenderCommandResult, SetItemPipeline, TrackedRenderPass,
+use bevy::{
+    ecs::system::{
+        lifetimeless::{Read, SRes},
+        Res,
     },
+    render::{
+        mesh::GpuBufferInfo,
+        render_phase::{
+            PhaseItem, RenderCommand, RenderCommandResult, SetItemPipeline, TrackedRenderPass,
+        },
+    },
+    sprite::SetMesh2dViewBindGroup,
 };
-use bevy_sprite::SetMesh2dViewBindGroup;
 
 use super::{
     extract::ExtractedSpriteInstancingBuffer, InstancedSpriteMesh, InstancedSpritesheetBindGroup,

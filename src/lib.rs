@@ -1,24 +1,18 @@
 use std::collections::HashSet;
 
-use bevy_app::{App, IntoSystemAppConfig, Plugin};
-use bevy_asset::{Assets, Handle};
-use bevy_core_pipeline::core_2d::Transparent2d;
-use bevy_ecs::{
+use bevy::{
+    core_pipeline::core_2d::Transparent2d,
     prelude::*,
-    system::{Commands, Resource},
-};
-use bevy_math::{Vec2, Vec3};
-use bevy_render::{
-    mesh::{GpuBufferInfo, GpuMesh, MeshVertexAttribute},
-    prelude::Mesh,
-    render_phase::AddRenderCommand,
-    render_resource::{
-        BindGroup, BufferInitDescriptor, BufferUsages, PrimitiveTopology, Shader,
-        SpecializedMeshPipelines, VertexFormat,
+    render::{
+        mesh::{GpuBufferInfo, GpuMesh, MeshVertexAttribute},
+        render_phase::AddRenderCommand,
+        render_resource::{
+            BindGroup, BufferInitDescriptor, BufferUsages, PrimitiveTopology,
+            SpecializedMeshPipelines, VertexFormat,
+        },
+        renderer::RenderDevice,
+        RenderApp, RenderSet,
     },
-    renderer::RenderDevice,
-    texture::Image,
-    ExtractSchedule, RenderApp, RenderSet,
 };
 use bytemuck::{Pod, Zeroable};
 

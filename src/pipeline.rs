@@ -1,20 +1,20 @@
 use std::mem::size_of;
 
-use bevy_ecs::{
-    system::Resource,
-    world::{FromWorld, World},
-};
-use bevy_render::{
-    mesh::MeshVertexBufferLayout,
-    render_resource::{
-        BindGroupLayout, BindGroupLayoutDescriptor, BindGroupLayoutEntry, BindingType,
-        BufferBindingType, RenderPipelineDescriptor, SamplerBindingType, ShaderStages,
-        SpecializedMeshPipeline, SpecializedMeshPipelineError, TextureSampleType,
-        TextureViewDimension, VertexAttribute, VertexBufferLayout, VertexFormat, VertexStepMode,
+use bevy::{
+    prelude::{FromWorld, Resource, World},
+    render::{
+        mesh::MeshVertexBufferLayout,
+        render_resource::{
+            BindGroupLayout, BindGroupLayoutDescriptor, BindGroupLayoutEntry, BindingType,
+            BufferBindingType, RenderPipelineDescriptor, SamplerBindingType, ShaderStages,
+            SpecializedMeshPipeline, SpecializedMeshPipelineError, TextureSampleType,
+            TextureViewDimension, VertexAttribute, VertexBufferLayout, VertexFormat,
+            VertexStepMode,
+        },
+        renderer::RenderDevice,
     },
-    renderer::RenderDevice,
+    sprite::{Mesh2dPipeline, Mesh2dPipelineKey},
 };
-use bevy_sprite::{Mesh2dPipeline, Mesh2dPipelineKey};
 use field_offset::offset_of;
 
 use super::{shader::INSTANCED_ENTITY_SHADER_HANDLE, SpriteInstanceData};

@@ -1,6 +1,7 @@
-use bevy_asset::HandleUntyped;
-use bevy_reflect::TypeUuid;
-use bevy_render::render_resource::Shader;
+use bevy::{
+    prelude::{HandleUntyped, Shader},
+    reflect::TypeUuid,
+};
 
 pub const INSTANCED_ENTITY_SHADER_HANDLE: HandleUntyped =
     HandleUntyped::weak_from_u64(Shader::TYPE_UUID, 12344143414121);

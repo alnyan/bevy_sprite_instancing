@@ -11,16 +11,12 @@ readme = "README.md"
 exclude = ["*.gif"]
 
 [dependencies]
-bevy_app = "0.10.1"
-bevy_asset = "0.10.1"
-bevy_core_pipeline = "0.10.1"
-bevy_ecs = "0.10.1"
-bevy_math = "0.10.1"
-bevy_reflect = "0.10.1"
-bevy_render = "0.10.1"
-bevy_sprite = "0.10.1"
-bevy_transform = "0.10.1"
-bevy_utils = "0.10.1"
+bevy = { version = "^0.10.1", default-features = false, features = [
+        "bevy_asset",
+        "bevy_core_pipeline",
+        "bevy_render",
+        "bevy_sprite",
+] }
 bytemuck = { version = "1.13.1", features = ["derive"] }
 field-offset = "0.3.5"
 
