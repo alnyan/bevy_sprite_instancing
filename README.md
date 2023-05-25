@@ -1,14 +1,17 @@
 `bevy_sprite_instancing`
 ========================
 
+[![crates.io](https://img.shields.io/crates/v/bevy_sprite_instancing)](https://crates.io/crates/bevy_sprite_instancing)
+![License](https://img.shields.io/crates/l/bevy_sprite_instancing)
+
 A plugin for Bevy to render lots of instanced sprites in a single draw call.
 
 How does the plugin work?
 -------------------------
 
-Instead of going through all similar entity sprites one-by-one, 
-the plugin provides  `SpriteInstancingGroup`s which can contain 
-Entity ID's of these sprites. The plugin then collect all these sprites' 
+Instead of going through all similar entity sprites one-by-one,
+the plugin provides  `SpriteInstancingGroup`s which can contain
+Entity ID's of these sprites. The plugin then collect all these sprites'
 transforms and submits them to the GPU as one large buffer, which is then
 used to draw all of them at once.
 
@@ -79,7 +82,7 @@ What I didn't yet implement
 
 There're some high-level features I haven't yet implemented:
 
-* View region culling: no need to submit transforms of sprites which aren't 
+* View region culling: no need to submit transforms of sprites which aren't
 	present on screen
 * GPU animations: instead of submitting a `texture_index` for each sprite,
 	maybe it would be a nice idea to submit `anim_start_index` and `anim_len`
@@ -87,11 +90,11 @@ There're some high-level features I haven't yet implemented:
 
 ... and some low-level ones:
 
-* Ability to mark a `SpriteInstancingGroup` as static (i.e. entities do not 
+* Ability to mark a `SpriteInstancingGroup` as static (i.e. entities do not
 	move) to avoid re-submitting its instancing data each frame
 * Avoid re-creation of some components needed for rendering each frame. Ideally,
 	stuff like `InstancedSpritesheet` only needs to be extracted once when
-	starting up, but when I tried this, I got `QueryDoesNotMatch`, lol. 
+	starting up, but when I tried this, I got `QueryDoesNotMatch`, lol.
 * Avoid re-allocation of `ExtractedSpriteInstancingBuffer` each frame. Tried to
 	implement this, but it seems like `wgpu` doesn't allow vertex buffers to be
 	mapped for writing, which's a bit weird (Vulkan allows this AFAIK).
