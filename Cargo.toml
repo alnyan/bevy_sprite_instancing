@@ -1,0 +1,24 @@
+[package]
+name = "bevy_sprite_instancing"
+version = "0.1.0"
+edition = "2021"
+authors = ["Mark Poliakov <mark@alnyan.me>"]
+description = "A Bevy plugin to render lots of instanced sprites"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bevy_app = "0.10.1"
+bevy_asset = "0.10.1"
+bevy_core_pipeline = "0.10.1"
+bevy_ecs = "0.10.1"
+bevy_math = "0.10.1"
+bevy_reflect = "0.10.1"
+bevy_render = "0.10.1"
+bevy_sprite = "0.10.1"
+bevy_transform = "0.10.1"
+bevy_utils = "0.10.1"
+bytemuck = { version = "1.13.1", features = ["derive"] }
+field-offset = "0.3.5"
+
