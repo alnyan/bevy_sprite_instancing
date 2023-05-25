@@ -26,6 +26,8 @@ Features
 How do I use this?
 ------------------
 
+For a quick example, see [this example](examples/simple.rs).
+
 Here's a simple example of how to draw lots of sprites:
 
 ```rust
@@ -92,9 +94,3 @@ There're some high-level features I haven't yet implemented:
 
 * Ability to mark a `SpriteInstancingGroup` as static (i.e. entities do not
 	move) to avoid re-submitting its instancing data each frame
-* Avoid re-creation of some components needed for rendering each frame. Ideally,
-	stuff like `InstancedSpritesheet` only needs to be extracted once when
-	starting up, but when I tried this, I got `QueryDoesNotMatch`, lol.
-* Avoid re-allocation of `ExtractedSpriteInstancingBuffer` each frame. Tried to
-	implement this, but it seems like `wgpu` doesn't allow vertex buffers to be
-	mapped for writing, which's a bit weird (Vulkan allows this AFAIK).
