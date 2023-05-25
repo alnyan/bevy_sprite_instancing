@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 use bevy::{
     core_pipeline::core_2d::Transparent2d,
     prelude::*,
@@ -13,12 +11,14 @@ use bevy::{
         renderer::RenderDevice,
         RenderApp, RenderSet,
     },
+    utils::HashSet,
 };
 use bytemuck::{Pod, Zeroable};
+use extract::ExtractedComponentCache;
 
 use self::{
     draw::DrawSpritesInstancedCommands,
-    extract::{extract_instanced_sprites, extract_instanced_spritesheets},
+    extract::extract_instancing_groups,
     pipeline::InstancedSpritePipeline,
     prepare::{prepare_instanced_spritesheets, queue_instanced_sprites},
     shader::{INSTANCED_ENTITY_SHADER, INSTANCED_ENTITY_SHADER_HANDLE},
@@ -82,13 +82,13 @@ impl Plugin for InstancedSpriteRenderPlugin {
             .add_render_command::<Transparent2d, DrawSpritesInstancedCommands>()
             .init_resource::<InstancedSpritePipeline>()
             .init_resource::<SpecializedMeshPipelines<InstancedSpritePipeline>>()
+            .init_resource::<ExtractedComponentCache>()
             .add_system(
                 setup_entity_instancing_mesh
                     .in_schedule(ExtractSchedule)
                     .run_if(not(resource_exists::<InstancedSpriteMesh>())),
             )
-            .add_system(extract_instanced_spritesheets.in_schedule(ExtractSchedule))
-            .add_system(extract_instanced_sprites.in_schedule(ExtractSchedule))
+            .add_system(extract_instancing_groups.in_schedule(ExtractSchedule))
             .add_system(prepare_instanced_spritesheets.in_set(RenderSet::Prepare))
             .add_system(queue_instanced_sprites.in_set(RenderSet::Queue));
     }
